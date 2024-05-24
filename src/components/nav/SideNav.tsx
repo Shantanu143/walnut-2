@@ -5,76 +5,112 @@ import { BsPeopleFill, BsSegmentedNav } from "react-icons/bs";
 import { FaServicestack } from "react-icons/fa";
 import { GiGraduateCap } from "react-icons/gi";
 import { GrConnect } from "react-icons/gr";
+import { useState } from "react";
 
 const SideNav = () => {
+  const [activeSubmenu, setActiveSubmenu] = useState(null);
+
   const navlinks = [
     {
       id: 1,
       title: "Home",
       route: "/",
       icon: <BiHomeSmile />,
+      bgcolor: "bg-[#011f4b]",
+      submenu: [],
     },
     {
       id: 2,
       title: "About Us",
       route: "/aboutus",
       icon: <BsPeopleFill />,
+      bgcolor: "bg-[#03396c]",
+      submenu: [
+        { id: 7, title: "Our Team", route: "/aboutus/ourteam" },
+        { id: 8, title: "Our Story", route: "/aboutus/ourstory" },
+      ],
     },
     {
       id: 3,
-      title: "Services ",
-      route: "aboutus/services",
+      title: "Services",
+      route: "/aboutus/services",
       icon: <FaServicestack />,
+      bgcolor: "bg-[#005b96]",
+      submenu: [
+        { id: 9, title: "Consulting", route: "/aboutus/services/consulting" },
+        { id: 10, title: "Strategy", route: "/aboutus/services/strategy" },
+      ],
     },
     {
       id: 4,
       title: "Segments we Serve",
-      route: "aboutus/segmentsweserve",
+      route: "/aboutus/segmentsweserve",
       icon: <BsSegmentedNav />,
+      bgcolor: "bg-[#6497b1]",
+      submenu: [],
     },
     {
       id: 5,
       title: "Continuous Learning",
-      route: "aboutus/continuouslearning",
+      route: "/aboutus/continuouslearning",
       icon: <GiGraduateCap />,
+      bgcolor: "bg-[#92d2f9]",
+      submenu: [],
     },
     {
       id: 6,
       title: "Lets Connect",
-      route: "aboutus/letsconnect",
+      route: "/aboutus/letsconnect",
       icon: <GrConnect />,
+      bgcolor: "bg-[#b3cde0]",
+      submenu: [],
     },
   ];
+
   return (
-    <>
-      <div className="hs-overlay [--auto-close:lg] hs-overlay-open:translate-x-0 -translate-x-full transition-all duration-300 transform hidden fixed top-0 start-0 bottom-0 z-[60] w-64 bg-white border-e border-gray-200 pt-7 pb-10 overflow-y-auto lg:block lg:translate-x-0 lg:end-auto lg:bottom-0 [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-track]:bg-gray-100 [&::-webkit-scrollbar-thumb]:bg-gray-300">
-        <div className="px-10">
-          <a className="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
-            <img src={logoImg} className="w-[10rem] h-[10rem]    " alt="logo" />
-          </a>
-        </div>
-        <nav
-          className="hs-accordion-group mt-3 h-[100vh] overflow-hidden  w-full flex flex-col flex-wrap bg-[#005b96] "
-          data-hs-accordion-always-open
-        >
-          <ul >
-            {navlinks.map((data) => {
-              return (
-                <li key={data.id}>
-                  <Link
-                    className="flex items-center  gap-x-3.5 py-2 px-2.5 bg-[#ff0000] text-base text-gray-100  hover:bg-[#011f4b]"
-                    to={data.route}
-                  >
-                    <span className="size-4 ">{data.icon}</span>
-                    {data.title}
-                  </Link>
-                </li>
-              );
-            })}
-          </ul>
-        </nav>
+    <div className="hs-overlay [--auto-close:lg] hs-overlay-open:translate-x-0 -translate-x-full transition-all duration-300 transform fixed top-0 start-0 bottom-0 z-[60] w-64 bg-white border-e border-gray-200 pt-7 pb-10 overflow-y-hidden lg:block lg:translate-x-0 lg:end-auto lg:bottom-0 [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-track]:bg-gray-100 [&::-webkit-scrollbar-thumb]:bg-gray-300">
+      <div className="px-10">
+        <a className="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
+          <img src={logoImg} className="w-[10rem] h-[10rem]" alt="logo" />
+        </a>
       </div>
-    </>
+      <nav className="hs-accordion-group mt-3 h-full w-full flex flex-col bg-[#005b96]">
+        <ul className="overflow-y-auto">
+          {navlinks.map((data) => (
+            <li
+              key={data.id}
+              className="relative group"
+              onMouseEnter={() => setActiveSubmenu(data.id)}
+              onMouseLeave={() => setActiveSubmenu(null)}
+            >
+              <Link
+                className={`flex items-center gap-x-3.5 py-6 px-2.5 ${data.bgcolor} text-base text-gray-100 hover:bg-[#ff0000] transition-all duration-300`}
+                to={data.route}
+                style={{ width: activeSubmenu === data.id ? "100%" : "auto" }}
+              >
+                <span className="text-xl">{data.icon}</span>
+                {data.title}
+              </Link>
+              {data.submenu.length > 0 && activeSubmenu === data.id && (
+                <ul className="absolute left-0 top-full mt-1 w-48 bg-white shadow-lg z-50">
+                  {data.submenu.map((submenu) => (
+                    <li key={submenu.id}>
+                      <Link
+                        className="block px-4 py-2 text-gray-700 hover:bg-gray-200"
+                        to={submenu.route}
+                      >
+                        {submenu.title}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </li>
+          ))}
+        </ul>
+      </nav>
+    </div>
   );
 };
+
 export default SideNav;

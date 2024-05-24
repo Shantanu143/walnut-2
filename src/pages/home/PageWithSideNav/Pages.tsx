@@ -13,10 +13,10 @@ const Pages = () => {
       <BannerHome />
       <SideNav />
 
-      <div className="ml-[20rem] overflow-hidden">
+      <div className="ml-[17rem] overflow-hidden">
         
         <Routes>
-          <Route path="/" element={<About />} />
+          <Route path="*" element={<About />} />
        <Route path="/services" element={<Services />} />
             <Route path="/segmentsweserve" element={<SegmentsWeServe />} />
             <Route path="/continuouslearning" element={<ContinuousLearning />} />
