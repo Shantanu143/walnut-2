@@ -23,25 +23,25 @@ const SideNav = () => {
     {
       id: 3,
       title: "Services ",
-      route: "/services",
+      route: "aboutus/services",
       icon: <FaServicestack />,
     },
     {
       id: 4,
       title: "Segments we Serve",
-      route: "/segmentsweserve",
+      route: "aboutus/segmentsweserve",
       icon: <BsSegmentedNav />,
     },
     {
       id: 5,
       title: "Continuous Learning",
-      route: "/continuouslearning",
+      route: "aboutus/continuouslearning",
       icon: <GiGraduateCap />,
     },
     {
       id: 6,
       title: "Lets Connect",
-      route: "/letsconnect",
+      route: "aboutus/letsconnect",
       icon: <GrConnect />,
     },
   ];
@@ -54,15 +54,15 @@ const SideNav = () => {
           </a>
         </div>
         <nav
-          className="hs-accordion-group mt-3 h-[100vh] overflow-hidden p-6 w-full flex flex-col flex-wrap bg-[#005b96] "
+          className="hs-accordion-group mt-3 h-[100vh] overflow-hidden  w-full flex flex-col flex-wrap bg-[#005b96] "
           data-hs-accordion-always-open
         >
-          <ul className="space-y-9">
+          <ul >
             {navlinks.map((data) => {
               return (
                 <li key={data.id}>
                   <Link
-                    className="flex items-center  gap-x-3.5 py-2 px-2.5 bg-gray-100 text-base text-gray-700 rounded-lg hover:bg-gray-100"
+                    className="flex items-center  gap-x-3.5 py-2 px-2.5 bg-[#ff0000] text-base text-gray-100  hover:bg-[#011f4b]"
                     to={data.route}
                   >
                     <span className="size-4 ">{data.icon}</span>
