@@ -37,8 +37,13 @@ const SideNav = () => {
       icon: <FaServicestack />,
       bgcolor: "bg-[#005b96]",
       submenu: [
-        { id: 9, title: "Consulting", route: "/aboutus/services/consulting" },
-        { id: 10, title: "Strategy", route: "/aboutus/services/strategy" },
+        { id: 9, title: "Business strategy Consultation", route: "/aboutus/consulting" },
+        { id: 10, title: "Coaching & Mentoring for Startups & SMEs", route: "/aboutus/coaching" },
+        { id: 11, title: "Financial Management consultancy", route: "/aboutus/financial" },
+        { id: 11, title: "Marketing  & Sales  Consultation", route: "/aboutus/marketing  " },
+        { id: 11, title: "Corporate training & Skill enhancement", route: "/aboutus/corporate" },
+        { id: 11, title: "B2B & B2G Sales Strategy", route: "/aboutus/b2b" },
+        { id: 11, title: "Retainership  Commitment  ", route: "/aboutus/retainership" },
       ],
     },
     {
