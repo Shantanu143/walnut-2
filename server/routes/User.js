@@ -1,7 +1,7 @@
 import express from "express"
 import User from "../models/User.js"
 import jwt from "jsonwebtoken";
-import bcrypt from "bcrypt"
+import bcrypt from "bcrypt";
 import ErrorHandler from "../utils/ErrorHandler.js";
 import verifyUser from "../utils/VerifyUser.js";
 
@@ -14,17 +14,17 @@ router.post("/new", async (req, res, next) => {
 
         const { name, email, ProfileIMG, DOB, gender, password } = req.body;
 
-        if (!name, !email, !password, !DOB, !gender) return next(400, "bad req!");
+        if (!name, !email, !password, !DOB, !gender) return next(ErrorHandler(401, "Some Fields Are Missing!"));
 
-        const hash = bcrypt.hashSync(password, 10)
+        const hash = await bcrypt.hashSync(password, 10)
 
         const NewUser = await User.create({
             name,
             email,
             ProfileIMG,
-            gender,
             DOB,
-            password: hash
+            password: hash,
+            gender
         })
 
         res.status(200).json(`Welcome ${NewUser.name}`)
@@ -38,7 +38,7 @@ router.post("/get", async (req, res, next) => {
     try {
 
         const { email, password } = req.body;
-        
+
         if (!email || !password) {
             if (!email) {
                 next(ErrorHandler(404, "Email is Missing!"))
@@ -52,15 +52,15 @@ router.post("/get", async (req, res, next) => {
             email
         })
 
-        if(!GetUser){
+        if (!GetUser) {
             next(ErrorHandler(404, "Please Provide Valid Credencials!"))
         }
 
         const { password: pass, createdAt, updatedAt, __v, ...rest } = GetUser._doc
 
-        const access_user = jwt.sign({_id: rest._id, email: rest.email, role: rest.role}, process.env.JWT_SECRET);
+        const access_user = jwt.sign({ _id: rest._id, email: rest.email, role: rest.role }, process.env.JWT_SECRET);
 
-        res.cookie("walnut_user", access_user, {secure: true, maxAge: expiry}).status(200).json({
+        res.cookie("walnut_user", access_user, { secure: true, maxAge: expiry }).status(200).json({
             message: `Welcome Back ${GetUser.name}`,
             data: rest
         })
@@ -70,9 +70,9 @@ router.post("/get", async (req, res, next) => {
     }
 })
 
-router.get("/verify", verifyUser, async(req, res, next)=>{
+router.get("/verify", verifyUser, async (req, res, next) => {
     try {
-        
+
         const user = req.user;
 
         res.status(200).json({
@@ -81,7 +81,7 @@ router.get("/verify", verifyUser, async(req, res, next)=>{
             message: "User is verified",
             user
         })
-        
+
     } catch (error) {
         next(error);
     }

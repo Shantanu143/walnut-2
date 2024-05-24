@@ -11,14 +11,14 @@ app.use(express.json());
 app.use(cookieParser());
 
 dotenv.config();
-const PORT = process.env.PORT || 5000
-const MONGO_URL = process.env.MONGO_URL
+const PORT = process.env.PORT || 5000;
+const MONGO_URL = process.env.MONGOURL;
 
 try {
-    mongoose.connect(MONGO_URL);
-    console.log("Database is connected");
+    mongoose.connect(MONGO_URL)
+        .then(() => console.log('Database is connected'))
 } catch (error) {
-    console.log("Database connectivity error!");
+    console.log('Database is error ' + error);
 }
 
 app.get("/", (req, res) => {
