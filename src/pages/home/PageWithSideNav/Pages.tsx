@@ -7,6 +7,17 @@ import SegmentsWeServe from "../../../components/SegmentsWeServe/SegmentsWeServe
 import ContinuousLearning from "../../../components/ContinuousLearning/ContinuousLearning";
 import LetsConnect from "../../../components/LetsConnect/LetsConnect";
 import SingleService from "../../../components/Services/SingleService";
+import { useState } from "react";
+
+
+
+import businessImg from "../../../assets/Business.jpg";
+import coachingImg from "../../../assets/coching.jpg";
+import financialImg from "../../../assets/finacialManagement.jpg";
+import marketingImg from "../../../assets/marketingSales.jpg";
+import corporateImg from "../../../assets/corparateTraning.jpg";
+import b2bImg from "../../../assets/b2b.jpg";
+import retainerImg from "../../../assets/Retainership.jpg";
 
 interface Service {
   route: string;
@@ -63,7 +74,7 @@ const Pages = () => {
           <br />
         </>
       ),
-      img: "https://dummyimage.com/720x600",
+      img: businessImg,
     },
     {
       route: "/coaching",
@@ -107,7 +118,7 @@ const Pages = () => {
           of business growth and achieve long-term success.
         </>
       ),
-      img: "https://dummyimage.com/720x600",
+      img: coachingImg,
     },
     {
       route: "/financial",
@@ -134,7 +145,7 @@ const Pages = () => {
         <> "Customized Financial Solutions for Loan, Insurance & Investment"</>
       ),
       para4: <></>,
-      img: "https://dummyimage.com/720x600",
+      img: financialImg,
     },
     {
       route: "/marketing",
@@ -153,17 +164,17 @@ const Pages = () => {
       para2: (
         <>
           <ul>
-            <li>Complete Brand Strategy consulting</li>
-            <li>Digital Strategy consulting</li>
-            <li>Media Buying & Public Relation management</li>
-            <li>Celebrity management & Integration</li>
-            <li>GTM Strategy Designing</li>
+            <li>• Complete Brand Strategy consulting</li>
+            <li>• Digital Strategy consulting</li>
+            <li>• Media Buying & Public Relation management</li>
+            <li>• Celebrity management & Integration</li>
+            <li>• GTM Strategy Designing</li>
           </ul>
         </>
       ),
       para3: <></>,
       para4: <></>,
-      img: "https://dummyimage.com/720x600",
+      img:marketingImg,
     },
     {
       route: "/corporate",
@@ -185,7 +196,7 @@ const Pages = () => {
       para3: <></>,
       para4: <></>,
       para2: <></>,
-      img: "https://dummyimage.com/720x600",
+      img: corporateImg,
     },
     {
       route: "/b2b",
@@ -205,16 +216,18 @@ const Pages = () => {
           <br />
           <ul>
             <li>
-              CAPEX – Our medical equipment sales model operates on a capex,
-              providing long-term investment solutions for businesses seeking to
-              enhance their medical infrastructure to provide better healthcare
-              facility to patients.
+              <br />
+              <b> CAPEX – </b>Our medical equipment sales model operates on a
+              capex, providing long-term investment solutions for businesses
+              seeking to enhance their medical infrastructure to provide better
+              healthcare facility to patients.
             </li>
             <li>
-              OPEX - Our health screening model for the pharmaceutical industry
-              is driving customer engagement ensuring personalized interactions
-              and seamless experiences, fostering strong connections and
-              loyalty.
+              <br />
+              <b> OPEX - </b> Our health screening model for the pharmaceutical
+              industry is driving customer engagement ensuring personalized
+              interactions and seamless experiences, fostering strong
+              connections and loyalty.
             </li>
           </ul>
         </>
@@ -222,7 +235,7 @@ const Pages = () => {
       para3: <></>,
       para4: <></>,
       para2: <></>,
-      img: "https://dummyimage.com/720x600",
+      img:b2bImg,
     },
     {
       route: "/retainership",
@@ -248,16 +261,28 @@ const Pages = () => {
       para3: <></>,
       para4: <></>,
       para2: <></>,
-      img: "https://dummyimage.com/720x600",
+      img: retainerImg,
     },
   ];
 
-  return (
-    <div>
-      <BannerHome />
-      <SideNav />
+  const [isNavOpen, setIsNavOpen] = useState(false);
 
-      <div className="ml-[17rem] overflow-hidden">
+  const toggleNav = () => {
+    setIsNavOpen(!isNavOpen);
+  };
+
+  return (
+    <>
+      <div className="lg:block hidden">
+        <BannerHome />
+      </div>
+      <SideNav isNavOpen={isNavOpen} toggleNav={toggleNav} />
+
+      <div
+        className={`transition-all duration-300 ${
+          isNavOpen ? "ml-64" : "ml-0"
+        } lg:ml-[17rem] overflow-hidden`}
+      >
         <Routes>
           <Route path="*" element={<About />} />
           <Route path="/services" element={<Services />} />
@@ -265,27 +290,25 @@ const Pages = () => {
           <Route path="/continuouslearning" element={<ContinuousLearning />} />
           <Route path="/letsconnect" element={<LetsConnect />} />
 
-          {service.map((item, index) => {
-            return (
-              <Route
-                key={index}
-                path={item.route}
-                element={
-                  <SingleService
-                    para1={item.para1}
-                    para2={item.para2}
-                    para3={item.para3}
-                    para4={item.para4}
-                    heading={item.heading}
-                    img={item.img}
-                  />
-                }
-              />
-            );
-          })}
+          {service.map((item, index) => (
+            <Route
+              key={index}
+              path={item.route}
+              element={
+                <SingleService
+                  para1={item.para1}
+                  para2={item.para2}
+                  para3={item.para3}
+                  para4={item.para4}
+                  heading={item.heading}
+                  img={item.img}
+                />
+              }
+            />
+          ))}
         </Routes>
       </div>
-    </div>
+    </>
   );
 };
 
