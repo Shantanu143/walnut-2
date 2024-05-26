@@ -37,8 +37,13 @@ const SideNav = ({
     },
     {
       id: 3,
+<<<<<<< HEAD:client/src/components/nav/SideNav.tsx
+      title: "Services ",
+      route: "aboutus/services",
+=======
       title: "Services",
       route: "/aboutus/services",
+>>>>>>> e6775c2e45fc6110145fe8eff0f072c34003d0f3:src/components/nav/SideNav.tsx
       icon: <FaServicestack />,
       bgcolor: "bg-[#005b96]",
       submenu: [
@@ -78,7 +83,11 @@ const SideNav = ({
     {
       id: 4,
       title: "Segments we Serve",
+<<<<<<< HEAD:client/src/components/nav/SideNav.tsx
+      route: "aboutus/segmentsweserve",
+=======
       route: "/aboutus/segmentsweserve",
+>>>>>>> e6775c2e45fc6110145fe8eff0f072c34003d0f3:src/components/nav/SideNav.tsx
       icon: <BsSegmentedNav />,
       bgcolor: "bg-[#6497b1]",
       submenu: [],
@@ -86,15 +95,24 @@ const SideNav = ({
     {
       id: 5,
       title: "Continuous Learning",
+<<<<<<< HEAD:client/src/components/nav/SideNav.tsx
+      route: "aboutus/continuouslearning",
+=======
       route: "/aboutus/continuouslearning",
+>>>>>>> e6775c2e45fc6110145fe8eff0f072c34003d0f3:src/components/nav/SideNav.tsx
       icon: <GiGraduateCap />,
       bgcolor: "bg-[#92d2f9]",
       submenu: [],
     },
     {
       id: 6,
+<<<<<<< HEAD:client/src/components/nav/SideNav.tsx
+      title: "Lets Connect",
+      route: "aboutus/letsconnect",
+=======
       title: "Let's Connect",
       route: "/aboutus/letsconnect",
+>>>>>>> e6775c2e45fc6110145fe8eff0f072c34003d0f3:src/components/nav/SideNav.tsx
       icon: <GrConnect />,
       bgcolor: "bg-[#b3cde0]",
       submenu: [],
@@ -121,6 +139,26 @@ const SideNav = ({
             <img src={logoImg} className="w-[10rem] h-[10rem]" alt="logo" />
           </a>
         </div>
+<<<<<<< HEAD:client/src/components/nav/SideNav.tsx
+        <nav
+          className="hs-accordion-group mt-3 h-[100vh] overflow-hidden  w-full flex flex-col flex-wrap bg-[#005b96] "
+          data-hs-accordion-always-open
+        >
+          <ul >
+            {navlinks.map((data) => {
+              return (
+                <li key={data.id}>
+                  <Link
+                    className="flex items-center  gap-x-3.5 py-2 px-2.5 bg-[#ff0000] text-base text-gray-100  hover:bg-[#011f4b]"
+                    to={data.route}
+                  >
+                    <span className="size-4 ">{data.icon}</span>
+                    {data.title}
+                  </Link>
+                </li>
+              );
+            })}
+=======
         <nav className="hs-accordion-group mt-3 h-full w-full flex flex-col bg-[#005b96]">
           <ul className="overflow-y-auto">
             {navlinks.map((data) => (
@@ -153,6 +191,7 @@ const SideNav = ({
                 )}
               </li>
             ))}
+>>>>>>> e6775c2e45fc6110145fe8eff0f072c34003d0f3:src/components/nav/SideNav.tsx
           </ul>
           <div className="mt-8 mb-8 flex items-center justify-center space-x-4">
             {/* Instagram Icon */}
