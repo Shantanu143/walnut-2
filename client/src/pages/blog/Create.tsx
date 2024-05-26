@@ -75,11 +75,11 @@ const CreatePost = () => {
 
     console.log("log success");
 
-    const { success, message, data } = await response.json();
+    const { success, message, data: id } = await response.json();
 
     if (success === true) {
       toast.success(message);
-      navigate(`/blog/${data}`);
+      navigate(`/blog/${id}`);
     } else {
       toast.error(message);
     }
@@ -167,7 +167,7 @@ const CreatePost = () => {
             <button
               onClick={upload}
               type="button"
-              disabled={pec > 0 ? true : false}
+              disabled={pec > 1 ? true : false}
               className="bg-green-500 border py-4 sm:text-base rounded-lg font-semibold hover:shadow-[0px_1px_15px_0px_#2f855a] hover:scale-95 border-gray-300 duration-500 text-white px-5"
             >
               {pec > 1 ? `Uploading is at ${pec}` : "Upload Poster"}
@@ -183,9 +183,9 @@ const CreatePost = () => {
 
           <button
             type="submit"
-            className="bg-black text-white p-3 rounded"
+            className="bg-black text-white p-3 rounded hover:scale-95 hover:shadow-[0px_1px_15px_0px_#000] duration-500"
             style={{ marginTop: "10px" }}
-            disabled={pec > 0 ? true : false}
+            disabled={pec > 1 ? true : false}
           >
             {"Create Post"}
           </button>

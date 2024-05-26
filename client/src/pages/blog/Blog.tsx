@@ -50,7 +50,7 @@ const Blog = () => {
               </div>
             </div>
             <div
-              className="w-full flex flex-col gap-2 items-center portrait:px-3 portrait:ml-2 m-auto h-auto"
+              className="w-full flex flex-col gap-2 px-11 mb-16 items-center portrait:px-3 portrait:ml-2 m-auto h-auto"
               dangerouslySetInnerHTML={{ __html: data.description }}
             />{" "}
           </>
