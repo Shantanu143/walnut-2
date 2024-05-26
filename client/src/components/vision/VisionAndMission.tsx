@@ -18,27 +18,32 @@ const VisionAndMission = () => {
     },
     {
       title: "Mission",
-      description:
-        "To guide businesses and professionals toward unparalleled growth, steadfast integrity and unwavering dedication.",
+      description: (
+        <>
+          "To guide businesses and professionals <br /> toward unparalleled growth,<br />
+          steadfast integrity and unwavering  <br />dedication."
+        </>
+      ),
       icon: <TbTargetArrow />,
     },
   ];
   return (
     <section className="text-gray-600 body-font">
-      <div className="container px-5 py-10 mx-auto">
-        <div className="flex flex-wrap -m-4">
-          {projects.map((data,index) => {
+      <div className="container px-5 mx-auto">
+        <div className="flex flex-wrap justify-center items-center -m-4">
+          {projects.map((data, index) => {
             return (
-              <div className="p-4  lg:w-[25%]" key={index}>
-                <div className="h-full bg-[#005B96] bg-opacity-75 px-8 pt-16 pb-24 rounded-lg overflow-hidden text-center relative">
-                  <h1 className="title-font sm:text-2xl text-xl font-medium text-gray-900 mb-3">
-                    {data.title}
-                  </h1>
-                  <p className="leading-relaxed text-[#FFFFE0] mb-3">{data.description}</p>
-                  
-                  <div className="flex justify-center items-center mt-8 text-[#ff0000]  tracking-wide leading-relaxed text-5xl">
+              <div className="p-4 lg:w-[25%]" key={index}>
+                <div className="h-full  bg-opacity-75 px-8 pt-5 pb-5 rounded-lg overflow-hidden text-center relative border border-gray-300">
+                  <div className="flex justify-center items-center mt-8 text-[#011f4b] tracking-wide leading-relaxed text-5xl">
                     {data.icon}
                   </div>
+                  <h1 className="title-font sm:text-2xl text-xl font-medium text-[#011f4b] my-3">
+                    {data.title}
+                  </h1>
+                  <p className="leading-relaxed text-black mb-3">
+                    {data.description}
+                  </p>
                 </div>
               </div>
             );

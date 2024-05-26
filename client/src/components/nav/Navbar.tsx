@@ -6,54 +6,62 @@ const Navbar = () => {
       id: 1,
       title: "Home",
       route: "/",
+      bgcolor: "bg-[#011f4b]",
     },
     {
       id: 2,
       title: "About Us",
       route: "/aboutus",
+      bgcolor: "bg-[#ff7400]",
     },
     {
       id: 3,
       title: "Services ",
-      route: "/services",
+      route: "/aboutus/services",
+      bgcolor: "bg-[#011f4b]",
     },
     {
       id: 4,
       title: "Segments we Serve",
-      route: "/segmentsweserve",
+      route: "/aboutus/segmentsweserve",
+      bgcolor: "bg-[#ff7400]",
     },
     {
       id: 5,
       title: "Continuous Learning",
-      route: "/continuouslearning",
+      route: "/aboutus/continuouslearning",
+      bgcolor: "bg-[#011f4b]",
     },
     {
       id: 6,
       title: "Lets Connect",
-      route: "/letsconnect",
+      route: "/aboutus/letsconnect",
+      bgcolor: "bg-[#ff7400]",
     },
   ];
   return (
-    <header className="text-gray-600 bg-[#ff9a00] body-font">
+    <header className="text-gray-600  body-font">
       <div className="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
         <a className="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
           <img
             src={logoImg}
-            className="w-20 h-20 text-white p-2 bg-indigo-500 rounded-full"
+            className="w-40 h-40 text-white p-2rounded-full"
             alt="logo"
           />
-
-          <span className="ml-3 text-xl">Walnut</span>
         </a>
         <nav className="md:ml-auto md:mr-auto flex flex-wrap items-center text-base justify-center">
           {/* <ul> */}
-            {navlinks.map((data) => {
+          {navlinks.map((data) => {
             return (
-                <Link key={data.id} to={data.route} className="mr-5 hover:text-[#b3cde0] transition-colors duration-300">
-                    {data.title}
-                </Link>
+              <Link
+                key={data.id}
+                to={data.route}
+                className={`border ${data.bgcolor} border-gray-300 text-gray-200 px-8 py-4 text-2xl transition-colors duration-300`}
+              >
+                {data.title}
+              </Link>
             );
-            })}
+          })}
           {/* </ul> */}
         </nav>
       </div>

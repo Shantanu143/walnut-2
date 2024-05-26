@@ -3,8 +3,10 @@ import Navbar from "../../components/nav/Navbar";
 import VisionAndMission from "../../components/vision/VisionAndMission";
 
 const HomePage = () => {
+
+
   return (
-    <div className="bg-[#b3cde0] overscroll-none">
+    <div className="overscroll-none">
       <BannerHome />
       <Navbar />
       <VisionAndMission />
