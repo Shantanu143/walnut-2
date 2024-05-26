@@ -31,9 +31,7 @@ const Admin = () => {
     <>
       <AdminNav />
 
-      <h1>Blogs Home</h1>
-
-      <div className="flex flex-wrap flex-row gap-6 px-6 sm:ml-6 lg:ml-16 mt-5">
+      <div className="flex flex-wrap flex-row gap-6 px-6 mb-24 sm:ml-6 lg:ml-16 mt-5">
         {data?.map((data) => (
           <Card
             id={String(data?._id)}

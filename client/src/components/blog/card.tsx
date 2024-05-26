@@ -16,9 +16,9 @@ const card = ({ title, auther, date, description, img, id }: Blog) => {
   const Navigation = useNavigate();
 
   return (
-    <section className="flex gap-2 hover:cursor-pointer sm:gap-4 lg:w-[500px] xl:w-[700px] p-2 sm:p-2 flex-col portrait:items-center justify-center items-center sm:flex-row border rounded-lg border-black">
+    <section className="flex gap-2 hover:cursor-pointer sm:gap-4 lg:w-[500px] xl:w-[700px] p-2 sm:p-2 flex-col portrait:items-center justify-center items-center sm:flex-row border rounded-lg border-black overflow-hidden">
       <CiEdit
-        className="relative portrait:left-[45%] -top-0 left-[94%] lg:-top-16 sm:-top-4 sm:left-[96%] cursor-pointer portrait:w-[50px] w-[200px] lg:w-[140px] sm:w-[300px]  h-[27px] font-extrabold duration-300 hover:text-blue-800 hover:scale-125"
+        className="relative portrait:left-[45%] -top-0 left-[94%] lg:-top-16 sm:-top-4 sm:left-[96%] cursor-pointer portrait:w-[50px] md:-top-16 md:left-[93%] w-[200px] lg:w-[140px] sm:w-[300px]  h-[27px] font-extrabold duration-300 hover:text-blue-800 hover:scale-125"
         onClick={() => Navigation(`/edit/${id}`)}
       />
 

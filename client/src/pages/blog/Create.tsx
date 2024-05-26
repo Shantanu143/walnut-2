@@ -154,7 +154,7 @@ const CreatePost = () => {
               disabled={pec > 0 ? true : false }
               className="bg-green-500 border py-4 rounded-lg font-semibold hover:shadow-[0px_1px_15px_0px_#2f855a] hover:scale-90 duration-500 text-white px-5"
             >
-            { pec > 1 ? `Uploading is at ${pec}` : "Upload" }
+            { pec > 1 ? `Uploading is at ${pec}` : "Upload Poster" }
             </button>
           </div>
 
