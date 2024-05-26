@@ -85,8 +85,22 @@ const CreatePost = () => {
     }
   };
 
+  if (Img !== undefined) {
+    console.log(Img.size);
+  }
+
   const upload = () => {
+    if (Img === undefined) return toast.error("Please Select Image");
+
     if (Img !== undefined) {
+      if (title.length <= 0) return toast.error("Title is Missing!");
+      if (summary.length <= 0) return toast.error("Summary is Missing!");
+
+      if (ImageUrl.startsWith("h"))
+        return toast.success("Image has Already Uploaded");
+
+      toast.success("Uploading is Started");
+
       const imgRef = ref(ImageDB, `files/${v4()}`);
       const upload = uploadBytesResumable(imgRef, Img);
 
@@ -149,12 +163,14 @@ const CreatePost = () => {
               className="p-4 border sm:w-[90%] border-black rounded"
               onChange={handleFile}
             />
+
             <button
               onClick={upload}
-              disabled={pec > 0 ? true : false }
-              className="bg-green-500 border py-4 rounded-lg font-semibold hover:shadow-[0px_1px_15px_0px_#2f855a] hover:scale-90 duration-500 text-white px-5"
+              type="button"
+              disabled={pec > 0 ? true : false}
+              className="bg-green-500 border py-4 sm:text-base rounded-lg font-semibold hover:shadow-[0px_1px_15px_0px_#2f855a] hover:scale-95 border-gray-300 duration-500 text-white px-5"
             >
-            { pec > 1 ? `Uploading is at ${pec}` : "Upload Poster" }
+              {pec > 1 ? `Uploading is at ${pec}` : "Upload Poster"}
             </button>
           </div>
 
@@ -169,7 +185,7 @@ const CreatePost = () => {
             type="submit"
             className="bg-black text-white p-3 rounded"
             style={{ marginTop: "10px" }}
-            disabled={pec > 0 ? true : false }
+            disabled={pec > 0 ? true : false}
           >
             {"Create Post"}
           </button>
