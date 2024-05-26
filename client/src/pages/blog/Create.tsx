@@ -154,13 +154,13 @@ const CreatePost = () => {
             onChange={(e) => setSummary(e.target.value)}
             value={summary}
           />
-          <div className="flex flex-col sm:flex-row gap-2">
+          <div className="flex flex-col gap-2">
             <input
               type="file"
               accept="image/*"
               required
               multiple={false}
-              className="p-4 border sm:w-[90%] border-black rounded"
+              className="p-4 border border-black rounded"
               onChange={handleFile}
             />
 
