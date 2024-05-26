@@ -36,8 +36,7 @@ const Login = () => {
       toast.error(data.message);
     } else {
       toast.success(`Welcome Back ${data.name}`);
-
-      navigate("/");
+      navigate("/admin-page");
     }
     setLoading(false);
   };
@@ -88,7 +87,7 @@ const Login = () => {
         </button>
       </form>
 
-      <div className="sm:w-full w-[79%] flex portrait:items-center flex-col gap-3">
+      {/* <div className="sm:w-full w-[79%] flex portrait:items-center flex-col gap-3">
         <p>
           Don't Have an account ?
           <Link to={"/register"} className="font-semibold">
@@ -96,7 +95,7 @@ const Login = () => {
             Register
           </Link>
         </p>
-      </div>
+      </div> */}
     </main>
   );
 };
