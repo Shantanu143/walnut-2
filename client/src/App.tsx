@@ -5,6 +5,7 @@ import Login from "./pages/admin/Login";
 import Admin from "./pages/admin/Admin";
 import Create from "./pages/blog/Create";
 import Blog from "./pages/blog/Blog";
+import Edit from "./pages/blog/Edit";
 
 const App = () => {
   return (
@@ -13,6 +14,7 @@ const App = () => {
       <Route path="/aboutus" element={<Pages />} />
       <Route path="/admin" element={<Login />} />
       <Route path="/blog/:id" element={<Blog />} />
+      <Route path="/edit/:id" element={<Edit />} />
       <Route path="/admin-page" element={<Admin />} />
       <Route path="/admin/create" element={<Create />} />
     </Routes>
