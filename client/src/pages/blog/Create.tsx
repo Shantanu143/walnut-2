@@ -56,31 +56,8 @@ const CreatePost = () => {
   ) => {
     e.preventDefault();
 
-    if (Img !== undefined) {
-      const imgRef = ref(ImageDB, `files/${v4()}`);
-      const upload = uploadBytesResumable(imgRef, Img);
-
-      console.log("log before image upload");
-
-      upload.on(
-        "state_changed",
-        (snapshot) => {
-          const progress =
-            (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-          setPec(Math.round(progress));
-        },
-        (error) => {
-          console.log(error);
-        },
-        () => {
-          getDownloadURL(upload.snapshot.ref).then((downloadUrl) => {
-            setURL(downloadUrl);
-            console.log(downloadUrl);
-            setPec(0);
-          });
-        }
-      );
-    }
+    if (!ImageUrl.startsWith("h"))
+      return toast.error("Poster is not uploaded!");
 
     console.log("log after image upload");
 
@@ -108,6 +85,34 @@ const CreatePost = () => {
     }
   };
 
+  const upload = () => {
+    if (Img !== undefined) {
+      const imgRef = ref(ImageDB, `files/${v4()}`);
+      const upload = uploadBytesResumable(imgRef, Img);
+
+      console.log("log before image upload");
+
+      upload.on(
+        "state_changed",
+        (snapshot) => {
+          const progress =
+            (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+          setPec(Math.round(progress));
+        },
+        (error) => {
+          console.log(error);
+        },
+        () => {
+          getDownloadURL(upload.snapshot.ref).then((downloadUrl) => {
+            setURL(downloadUrl);
+            console.log(downloadUrl);
+            setPec(0);
+          });
+        }
+      );
+    }
+  };
+
   return (
     <>
       <AdminNav />
@@ -123,6 +128,7 @@ const CreatePost = () => {
             className="p-4 border border-black rounded"
             type="text"
             placeholder="Title"
+            required
             value={title}
             onChange={(e) => setTitle(e.target.value)}
           />
@@ -130,17 +136,28 @@ const CreatePost = () => {
           <textarea
             className="p-4 border h-32 border-black rounded"
             placeholder="Summary"
+            required
             onChange={(e) => setSummary(e.target.value)}
             value={summary}
           />
+          <div className="flex flex-col sm:flex-row gap-2">
             <input
               type="file"
               accept="image/*"
+              required
               multiple={false}
-              className="p-4 border border-black rounded"
+              className="p-4 border sm:w-[90%] border-black rounded"
               onChange={handleFile}
             />
-          
+            <button
+              onClick={upload}
+              disabled={pec > 0 ? true : false }
+              className="bg-green-500 border py-4 rounded-lg font-semibold hover:shadow-[0px_1px_15px_0px_#2f855a] hover:scale-90 duration-500 text-white px-5"
+            >
+            { pec > 1 ? `Uploading is at ${pec}` : "Upload" }
+            </button>
+          </div>
+
           <ReactQuill
             modules={modules}
             value={content}
@@ -152,8 +169,9 @@ const CreatePost = () => {
             type="submit"
             className="bg-black text-white p-3 rounded"
             style={{ marginTop: "10px" }}
+            disabled={pec > 0 ? true : false }
           >
-            {pec > 1 ? `Uploading is at ${pec}` : "Create Post"}
+            {"Create Post"}
           </button>
         </form>
       </section>
