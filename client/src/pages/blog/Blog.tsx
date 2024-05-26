@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
-import toast from "react-hot-toast";
 import { BlogType } from "../../typescript/res";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import AdminNav from "../../components/nav/AdminNav";
 
 const Blog = () => {
@@ -10,8 +9,6 @@ const Blog = () => {
   const { id } = useParams();
   const img =
     "https://t4.ftcdn.net/jpg/04/73/25/49/360_F_473254957_bxG9yf4ly7OBO5I0O5KABlN930GwaMQz.jpg";
-
-  const navigate = useNavigate();
 
   const GetData = async () => {
     const res = await fetch(`/api/blog/get/${id}`);
@@ -27,23 +24,6 @@ const Blog = () => {
   useEffect(() => {
     GetData();
   }, []);
-
-  const handleDelete = async () => {
-    const res = await fetch(`/api/post/delete/${id}`, {
-      method: "DELETE",
-    });
-    const { success, message } = await res.json();
-
-    if (success === true) {
-      toast.success(message);
-
-      setTimeout(() => {
-        navigate("/");
-      }, 2000);
-    } else {
-      toast.error("Got an problem while deleting!");
-    }
-  };
 
   return (
     <>
@@ -68,7 +48,6 @@ const Blog = () => {
                 <span className="font-semibold">{data.auther.name}</span>
                 <span className="">20/3/2022</span>
               </div>
-
             </div>
             <div
               className="w-full flex flex-col gap-2 items-center portrait:px-3 portrait:ml-2 m-auto h-auto"
