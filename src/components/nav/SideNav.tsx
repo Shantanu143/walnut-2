@@ -21,7 +21,8 @@ const SideNav = ({
       title: "Home",
       route: "/",
       icon: <BiHomeSmile />,
-      bgcolor: "bg-[#011f4b]",
+
+      bgcolor: "bg-[#b3cde0]",
       submenu: [],
     },
     {
@@ -29,7 +30,8 @@ const SideNav = ({
       title: "About Us",
       route: "/aboutus",
       icon: <BsPeopleFill />,
-      bgcolor: "bg-[#03396c]",
+
+      bgcolor: "bg-[#92d2f9]",
       submenu: [
         { id: 7, title: "Our Team", route: "/aboutus/ourteam" },
         { id: 8, title: "Our Story", route: "/aboutus/ourstory" },
@@ -40,7 +42,8 @@ const SideNav = ({
       title: "Services",
       route: "/aboutus/services",
       icon: <FaServicestack />,
-      bgcolor: "bg-[#005b96]",
+    
+      bgcolor: "bg-[#6497b1]",
       submenu: [
         {
           id: 9,
@@ -80,7 +83,7 @@ const SideNav = ({
       title: "Segments we Serve",
       route: "/aboutus/segmentsweserve",
       icon: <BsSegmentedNav />,
-      bgcolor: "bg-[#6497b1]",
+      bgcolor: "bg-[#005b96]",
       submenu: [],
     },
     {
@@ -88,7 +91,7 @@ const SideNav = ({
       title: "Continuous Learning",
       route: "/aboutus/continuouslearning",
       icon: <GiGraduateCap />,
-      bgcolor: "bg-[#92d2f9]",
+      bgcolor: "bg-[#03396c]",
       submenu: [],
     },
     {
@@ -96,7 +99,7 @@ const SideNav = ({
       title: "Let's Connect",
       route: "/aboutus/letsconnect",
       icon: <GrConnect />,
-      bgcolor: "bg-[#b3cde0]",
+      bgcolor: "bg-[#011f4b]",
       submenu: [],
     },
   ];
@@ -131,7 +134,7 @@ const SideNav = ({
                 onMouseLeave={() => setActiveSubmenu(null)}
               >
                 <Link
-                  className={`flex items-center gap-x-2.5 py-4 px-2.5 ${data.bgcolor} text-bold text-xl text-gray-100 hover:bg-[#ff7400] transition-all duration-300`}
+                  className={`flex items-center gap-x-2.5 py-4 px-2.5 ${data.bgcolor} text-bold text-xl text-[#ff7400] transition-all duration-300`}
                   to={data.route}
                 >
                   <span className="text-xl">{data.icon}</span>
