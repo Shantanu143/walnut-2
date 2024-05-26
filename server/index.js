@@ -33,18 +33,15 @@ app.use("/api/blog", Blog)
 
 app.use((err, req, res, next) => {
     const statusCode = err.statusCode || 400;
-    let message = err.message || "Internal server error!";
 
-    if (err.code === 11000) {
-        message = "Aready Exist!"
-    }
+    if (err.code === '11000') return err.message = "Aready Exist!"
+    let message = err.message || 'Internal Server Error';
 
-    return {
+    return res.status(statusCode).json({
         success: false,
         statusCode,
-        message
-    }
-
+        message,
+    });
 })
 
 app.listen(PORT, () => {

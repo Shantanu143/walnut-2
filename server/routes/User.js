@@ -12,7 +12,7 @@ const expiry = 1000 * 60 * 60 * 24 * 300;
 router.post("/new", async (req, res, next) => {
     try {
 
-        const { name, email, ProfileIMG, DOB, gender, password } = req.body;
+        const { name, role, email, ProfileIMG, DOB, gender, password } = req.body;
 
         if (!name, !email, !password, !DOB, !gender) return next(ErrorHandler(401, "Some Fields Are Missing!"));
 
@@ -58,7 +58,7 @@ router.post("/get", async (req, res, next) => {
 
         const { password: pass, createdAt, updatedAt, __v, ...rest } = GetUser._doc
 
-        const access_user = jwt.sign({ _id: rest._id, email: rest.email, role: rest.role }, process.env.JWT_SECRET);
+        const access_user = jwt.sign({ _id: rest._id, name: rest.name, email: rest.email, role: rest.role }, process.env.JWT_SECRET);
 
         res.cookie("walnut_user", access_user, { secure: true, maxAge: expiry }).status(200).json({
             message: `Welcome Back ${GetUser.name}`,
@@ -74,7 +74,7 @@ router.get("/verify", verifyUser, async (req, res, next) => {
     try {
 
         const user = req.user;
-
+        console.log("verification is completed");
         res.status(200).json({
             success: true,
             statusCode: 200,

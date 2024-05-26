@@ -1,10 +1,10 @@
-const ErrorHandler = (statusCode, messsage) => {
+const ErrorHandler = (statusCode, message) => {
     const error = new Error();
 
-    error.message = messsage;
-    error.statusCode = statusCode;
+    error.statusCode = statusCode,
+    error.message = message;
 
-    return error;
+    return error
 }
 
 export default ErrorHandler;

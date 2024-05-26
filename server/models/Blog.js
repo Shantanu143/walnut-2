@@ -6,9 +6,19 @@ const BlogSchema = new mongoose.Schema({
         required: true
     },
     auther: {
-        type: mongoose.Types.ObjectId,
-        ref: 'User',
-        required: true
+        id: {
+            type: mongoose.Types.ObjectId,
+            ref: 'User',
+            required: true
+        },
+        name: {
+            type: String,
+            required: true
+        }
+    },
+    summary: {
+        type: String,
+        required: true,
     },
     description: {
         type: String,
@@ -21,7 +31,7 @@ const BlogSchema = new mongoose.Schema({
     },
     category: {
         type: String,
-        required: true,
+        required: false,
     }
 }, {
     timestamps: true
