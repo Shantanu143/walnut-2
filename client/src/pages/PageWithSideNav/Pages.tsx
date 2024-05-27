@@ -11,13 +11,21 @@ import { useState } from "react";
 
 
 
-import businessImg from "../../../assets/Business.jpg";
-import coachingImg from "../../assets/Business.jpg";
-import financialImg from "../../assets/Financial.jpg";
-import marketingImg from "../../../assets/marketingSales.jpg";
-import corporateImg from "../../../assets/Business.jpg";
-import b2bImg from "../../../assets/b2b.jpg";
-import retainerImg from "../../assets/Business.jpg";
+import businessImg from "../../assets/Business.jpg";
+import coachingImg from "../../assets/Coatching.jpg";
+import financialImg from "../../assets/Finacial.jpg";
+import marketingImg from "../../assets/marketingSales.jpg";
+import corporateImg from "../../assets/corparateTraning.jpg";
+import b2bImg from "../../assets/b2b.jpg";
+import retainerImg from "../../assets/Retainership.jpg";
+
+// import businessImg from "../../../assets/Business.jpg";
+// import coachingImg from "../../assets/Business.jpg";
+// import financialImg from "../../assets/Financial.jpg";
+// import marketingImg from "../../../assets/marketingSales.jpg";
+// import corporateImg from "../../../assets/Business.jpg";
+// import b2bImg from "../../../assets/b2b.jpg";
+// import retainerImg from "../../assets/Business.jpg";
 
 interface Service {
   route: string;
@@ -29,6 +37,9 @@ interface Service {
   img: string;
 }
 const Pages = () => {
+  
+
+
   const service: Service[] = [
     {
       route: "/consulting",

@@ -125,59 +125,41 @@ const SideNav = ({
             <img src={logoImg} className="w-[10rem] h-[10rem]" alt="logo" />
           </a>
         </div>
-        <nav
-          className="hs-accordion-group mt-3 h-[100vh] overflow-hidden  w-full flex flex-col flex-wrap bg-[#005b96] "
-          data-hs-accordion-always-open
-        >
-          <ul>
-            {navlinks.map((data) => {
-              return (
-                <li key={data.id}>
-                  <Link
-                    className="flex items-center  gap-x-3.5 py-2 px-2.5 bg-[#ff0000] text-base text-gray-100  hover:bg-[#011f4b]"
-                    to={data.route}
-                  >
-                    <span className="size-4 ">{data.icon}</span>
-                    {data.title}
-                  </Link>
-                </li>
-              );
-            })}
-          </ul>
-          <nav className="hs-accordion-group mt-3 h-full w-full flex flex-col bg-[#005b96]">
-            <ul className="overflow-y-auto">
-              {navlinks.map((data) => (
-                <li
-                  key={data.id}
-                  className="relative group"
-                  onMouseEnter={() => setActiveSubmenu(data.id)}
-                  onMouseLeave={() => setActiveSubmenu(null)}
+
+        <nav className="hs-accordion-group mt-3 h-full w-full flex flex-col bg-[#005b96]">
+          <ul className="overflow-y-auto">
+            {navlinks.map((data) => (
+              <li
+                key={data.id}
+                className="relative group"
+                onMouseEnter={() => setActiveSubmenu(data.id)}
+                onMouseLeave={() => setActiveSubmenu(null)}
+              >
+                <Link
+                  className={`flex items-center gap-x-2.5 py-4 px-2.5 ${data.bgcolor} text-bold text-xl text-[#ff7400] transition-all duration-300`}
+                  to={data.route}
                 >
-                  <Link
-                    className={`flex items-center gap-x-2.5 py-4 px-2.5 ${data.bgcolor} text-bold text-xl text-[#ff7400] transition-all duration-300`}
-                    to={data.route}
-                  >
-                    <span className="text-xl">{data.icon}</span>
-                    {data.title}
-                  </Link>
-                  {data.submenu.length > 0 && activeSubmenu === data.id && (
-                    <ul className="absolute left-0 top-full mt-1 w-48 bg-white shadow-lg z-50">
-                      {data.submenu.map((submenu) => (
-                        <li key={submenu.id}>
-                          <Link
-                            className="block px-4 py-2 text-gray-700 hover:bg-gray-200"
-                            to={submenu.route}
-                          >
-                            {submenu.title}
-                          </Link>
-                        </li>
-                      ))}
-                    </ul>
-                  )}
-                </li>
-              ))}
-            </ul>
-          </nav>
+                  <span className="text-xl">{data.icon}</span>
+                  {data.title}
+                </Link>
+                {data.submenu.length > 0 && activeSubmenu === data.id && (
+                  <ul className="absolute left-0 top-full mt-1 w-48 bg-white shadow-lg z-50">
+                    {data.submenu.map((submenu) => (
+                      <li key={submenu.id}>
+                        <Link
+                          className="block px-4 py-2 text-gray-700 hover:bg-gray-200"
+                          to={submenu.route}
+                        >
+                          {submenu.title}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </li>
+            ))}
+          </ul>
+
           <div className="mt-8 mb-8 flex items-center justify-center space-x-4">
             {/* Instagram Icon */}
             <a
