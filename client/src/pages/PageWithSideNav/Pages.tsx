@@ -1,23 +1,23 @@
 import { Route, Routes } from "react-router-dom";
-import About from "../../../components/about/About";
-import BannerHome from "../../../components/BannerHome/BannerHome";
-import SideNav from "../../../components/nav/SideNav";
-import Services from "../../../components/Services/Services";
-import SegmentsWeServe from "../../../components/SegmentsWeServe/SegmentsWeServe";
-import ContinuousLearning from "../../../components/ContinuousLearning/ContinuousLearning";
-import LetsConnect from "../../../components/LetsConnect/LetsConnect";
-import SingleService from "../../../components/Services/SingleService";
+import About from "../../components/about/About";
+import BannerHome from "../../components/BannerHome/BannerHome";
+import SideNav from "../../components/nav/SideNav";
+import Services from "../../components/Services/Services";
+import SegmentsWeServe from "../../components/SegmentsWeServe/SegmentsWeServe";
+import ContinuousLearning from "../../components/ContinuousLearning/ContinuousLearning";
+import LetsConnect from "../../components/LetsConnect/LetsConnect";
+import SingleService from "../../components/Services/SingleService";
 import { useState } from "react";
 
 
 
 import businessImg from "../../../assets/Business.jpg";
-import coachingImg from "../../../assets/coching.jpg";
-import financialImg from "../../../assets/finacialManagement.jpg";
+import coachingImg from "../../assets/Business.jpg";
+import financialImg from "../../assets/Financial.jpg";
 import marketingImg from "../../../assets/marketingSales.jpg";
-import corporateImg from "../../../assets/corparateTraning.jpg";
+import corporateImg from "../../../assets/Business.jpg";
 import b2bImg from "../../../assets/b2b.jpg";
-import retainerImg from "../../../assets/Retainership.jpg";
+import retainerImg from "../../assets/Business.jpg";
 
 interface Service {
   route: string;
