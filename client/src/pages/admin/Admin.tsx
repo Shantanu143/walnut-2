@@ -1,4 +1,3 @@
-import { FiPlus } from "react-icons/fi";
 import Card from "../../components/blog/card";
 import AdminNav from "../../components/nav/AdminNav";
 import { useEffect, useState } from "react";

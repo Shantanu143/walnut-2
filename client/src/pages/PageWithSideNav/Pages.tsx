@@ -18,6 +18,7 @@ import marketingImg from "../../assets/marketingSales.jpg";
 import corporateImg from "../../assets/corparateTraning.jpg";
 import b2bImg from "../../assets/b2b.jpg";
 import retainerImg from "../../assets/Retainership.jpg";
+import SingleBlog from "../../components/blog/SingleBlog";
 
 // import businessImg from "../../../assets/Business.jpg";
 // import coachingImg from "../../assets/Business.jpg";
@@ -300,6 +301,7 @@ const Pages = () => {
           <Route path="/segmentsweserve" element={<SegmentsWeServe />} />
           <Route path="/continuouslearning" element={<ContinuousLearning />} />
           <Route path="/letsconnect" element={<LetsConnect />} />
+          <Route path="/blogPage/:id" element={<SingleBlog />} />
 
           {service.map((item, index) => (
             <Route
