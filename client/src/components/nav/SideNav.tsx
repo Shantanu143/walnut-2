@@ -40,7 +40,7 @@ const SideNav = ({
     {
       id: 3,
       title: "Services ",
-      route: "aboutus/services",
+      route: "/aboutus/services",
 
       icon: <FaServicestack />,
 
@@ -98,7 +98,7 @@ const SideNav = ({
     {
       id: 6,
       title: "Lets Connect",
-      route: "aboutus/letsconnect",
+      route: "/aboutus/letsconnect",
       icon: <GrConnect />,
       bgcolor: "bg-[#011f4b]",
       submenu: [],
